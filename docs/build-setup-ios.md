@@ -27,6 +27,7 @@ then add:
 <array>
   <string>weixin</string>
   <string>wechat</string>
+  <string>weixinULAPI</string>
 </array>
 ```
 
@@ -48,7 +49,8 @@ Step2:
 - (BOOL)application:(UIApplication *)application continueUserActivity:(nonnull NSUserActivity *)userActivity restorationHandler:(nonnull void (^)(NSArray * _Nullable))restorationHandler
 {
     NSLog(@"%@", userActivity.webpageURL);
-    
+    // 触发回调方法
+	  [RCTLinkingManager application:application continueUserActivity:userActivity restorationHandler:restorationHandler];
     return [WXApi handleOpenUniversalLink:userActivity delegate:self];
 }
 ```
